@@ -1,462 +1,457 @@
-Follow all rules defined in BRAND_RULES.md.
-# CREATIVE WEBGL EXPERIENCE DIRECTOR
+# AGENTS.md
 
-You are a senior creative developer, design director, motion designer, WebGL engineer, and UX strategist.
+# SYNC Website Development Rules
 
-Your responsibility is not to build webpages.
+This repository is used to build premium digital experiences and interactive websites.
 
-Your responsibility is to create immersive digital experiences that communicate complex ideas through interaction, storytelling, motion, and visual systems.
+The objective is not to generate generic SaaS websites, AI startup templates, dashboard landing pages, shadcn showcases, or marketing boilerplates.
 
----
+Every page should feel handcrafted, intentional, immersive, and memorable.
 
-# REFERENCE QUALITY
-
-Use these studios as quality benchmarks:
-
-- Active Theory
-- Resn
-- Fantasy
-- Basic Agency
-- Dogstudio
-- Locomotive
-- Immersive Garden
-- Make Me Pulse
-- Obys
-- Bruno Simon
-- Apple
-- Stripe Sessions
-- Vercel
-- Linear
-
-Never directly copy designs.
-
-Use them only as references for quality, motion, storytelling, transitions, and polish.
+The final experience should feel closer to an award-winning digital product than a traditional corporate website.
 
 ---
 
-# PROJECT TYPE
+# Required Skills
 
-This project is an enterprise-grade media and advertising technology platform.
+Whenever generating designs, layouts, interactions, animations, components, or pages, agents must actively use all available relevant skills.
 
-The experience should communicate:
+## UI / UX
 
-- Intelligence
-- Data
-- Connectivity
-- Trust
-- Scale
-- Innovation
-- Performance
+Required Skill:
 
-Avoid making the website feel like:
+- ui-ux-pro-max
 
-- A startup template
-- A SaaS template
-- A dashboard landing page
-- A marketing theme
+Purpose:
 
-The experience should feel like a premium digital product.
+- Visual hierarchy
+- Layout composition
+- Storytelling through design
+- Premium design systems
+- Typography systems
+- Enterprise-grade polish
+- User experience optimization
 
----
+Never generate generic layouts.
 
-# EXPERIENCE FIRST
-
-Never think:
-
-- Hero
-- Features
-- Services
-- Testimonials
-- CTA
-- Footer
-
-Think:
-
-- Opening Scene
-- Narrative Introduction
-- Problem Visualization
-- Transformation
-- Product Intelligence
-- Proof Layer
-- Final Reveal
-
-The website should feel like a journey.
+Every section should feel custom-designed.
 
 ---
 
-# STORYTELLING
+## GSAP
 
-Scrolling is storytelling.
+Required Skills:
 
-Scrolling is not navigation.
+- gsap-core
+- gsap-react
+- gsap-scrolltrigger
+- gsap-timeline
+- gsap-performance
+- gsap-plugins
+- gsap-frameworks
+- gsap-utils
 
-Every section should feel connected.
+Purpose:
 
-Every scene should evolve into the next scene.
+- Narrative scroll experiences
+- Timeline orchestration
+- Layered motion systems
+- Performance optimization
+- Scroll storytelling
+
+GSAP should drive major animation systems.
+
+---
+
+## Framer Motion
+
+Required Skills:
+
+- framer-motion
+- motion-react
+- motion-framer
+
+Purpose:
+
+- Micro interactions
+- Physics-based motion
+- Hover interactions
+- Continuous ambient motion
+- Presence transitions
+
+Framer Motion should enhance components and interactions.
+
+GSAP controls storytelling.
+
+Framer Motion controls interaction.
+
+---
+
+# Design Philosophy
+
+Every page should feel:
+
+- Premium
+- Intentional
+- Editorial
+- Interactive
+- Modern
+- Cinematic
+- Immersive
 
 Avoid:
 
-- Section jumps
-- Repetitive layouts
-- Fade-in animations
-- Slide-up animations
-- Card reveal patterns
+- Generic SaaS design
+- Dashboard-style layouts
+- Feature card overload
+- Cookie-cutter landing pages
+- Repetitive alternating sections
+- Generic startup aesthetics
+- Template-driven composition
 
 Prefer:
 
-- Morphing
-- Camera transitions
-- Scene progression
-- Object transformation
-- Environmental transitions
-- Scroll-controlled storytelling
-
----
-
-# VISUAL SYSTEM
-
-Every page must have:
-
-- One visual language
-- One motion language
-- One narrative language
-
-Avoid mixing unrelated styles.
-
-Everything should feel like part of one world.
-
----
-
-# WEBGL FIRST
-
-Three.js should be considered a primary storytelling medium.
-
-Use WebGL to explain:
-
-- Data flow
-- Intelligence
-- Audience connections
-- Media ecosystems
-- Network relationships
-- Customer journeys
-- Product transformation
-
-WebGL should support the story.
-
-Never use 3D for decoration only.
-
----
-
-# HERO OBJECTS
-
-Each major scene should have one primary object.
-
-Examples:
-
-- Globe
-- Data core
-- Intelligence engine
-- Network graph
-- Particle field
-- Signal system
-- Media ecosystem
-- AI brain
-- Energy stream
-
-Do not place multiple competing focal points in the same scene.
-
----
-
-# CAMERA DIRECTION
-
-Think like a filmmaker.
-
-Preferred camera movement:
-
-- Orbit
-- Dolly
-- Push In
-- Pull Out
-- Fly Through
-- Crane
-- Tracking Shot
-- Focus Shift
-
-Avoid static camera positioning.
-
-Camera movement should support the narrative.
-
----
-
-# SCENE TRANSITIONS
-
-Preferred transformations:
-
-Object → Particles
-
-Particles → Data Streams
-
-Data Streams → Network
-
-Network → Product
-
-Product → Intelligence Layer
-
-Intelligence Layer → Results
-
-Results → Call To Action
-
-Avoid:
-
-- Fade to next section
-- Abrupt scene changes
-- Independent sections
-
-Every scene should evolve into the next scene.
-
----
-
-# MOTION DESIGN
-
-Motion must feel intentional.
-
-Use:
-
-- GSAP
-- ScrollTrigger
-- Master timelines
-
-Create:
-
-masterTimeline
-
-sceneTimeline
-
-transitionTimeline
-
-Avoid:
-
-- Random animation
-- Multiple disconnected tweens
-- Hardcoded animation delays
-
-Motion should communicate meaning.
-
----
-
-# SCROLL CHOREOGRAPHY
-
-Scroll controls:
-
-- Camera
-- Scene progress
-- Object transformation
-- Lighting changes
-- Material transitions
-- Particle behavior
-- Environment state
-
-The user should feel like they are directing a cinematic experience.
-
----
-
-# WOW MOMENTS
-
-Each scene should contain one primary wow moment.
-
-Examples:
-
-- Particle morph
-- Data stream explosion
-- Infinite network
-- Globe transformation
-- Signal visualization
-- Fluid transition
-- Interactive intelligence graph
-- Shader distortion
-- Volumetric light reveal
-
-Avoid stacking multiple wow effects without purpose.
-
-One strong effect is better than five weak effects.
-
----
-
-# DESIGN SYSTEM
-
-Prefer:
-
-- Large typography
-- Strong hierarchy
-- Generous spacing
+- Storytelling
+- Layered experiences
 - Editorial layouts
-- Cinematic composition
-- Asymmetry
-- Negative space
-- Depth
-
-Avoid:
-
-- Small feature cards
-- Dense information blocks
-- Generic grids
-- Template layouts
-- Dashboard aesthetics
+- Custom section architecture
+- Immersive interactions
+- Spatial composition
+- Strong visual rhythm
 
 ---
 
-# SHADCN USAGE
+# Narrative Experience
 
-Use shadcn for:
+Pages should feel like experiences rather than collections of sections.
 
-- Navigation
-- Menus
-- Forms
-- Drawers
-- Dialogs
-- Tooltips
-- Search
+Content should unfold progressively.
 
-Do not use shadcn cards as primary layout structures.
+Information should be revealed in stages.
 
-Avoid card-heavy design.
+Users should naturally discover information while scrolling.
 
----
+Every section should connect visually and emotionally to the next.
 
-# GSAP RULES
+Avoid dumping information all at once.
 
-Always:
-
-- Use timelines
-- Use ScrollTrigger
-- Use gsap.context()
-- Clean up animations
-- Use scrubbed animations where appropriate
-
-Prefer:
-
-- Sequenced timelines
-- Scene-based animation architecture
-
-Avoid:
-
-- Independent animation chains
-- Excessive delays
+Create curiosity and progression.
 
 ---
 
-# THREEJS RULES
+# Motion Philosophy
 
-Always define:
+Motion must communicate meaning.
 
-1. Scene Purpose
-2. Camera Strategy
-3. Lighting Strategy
-4. Animation Strategy
-5. Transition Strategy
-6. Performance Strategy
+Animation should never exist purely for decoration.
 
-Every scene should contribute to the narrative.
+Motion should improve:
 
-Avoid decorative 3D.
+- Storytelling
+- Focus
+- Hierarchy
+- Transitions
+- User engagement
+- Visual flow
+
+Every section should contain meaningful motion.
+
+Do not rely only on fade-in animations.
 
 ---
 
-# PERFORMANCE
+# Headline Animations
+
+Preferred patterns:
+
+- Character reveal
+- Word reveal
+- Mask reveal
+- Stagger reveal
+- Scroll reveal
+- Highlight transitions
+- Scrub animations
+- Perspective reveals
+- Split text animations
+
+Headlines should feel intentional and cinematic.
+
+---
+
+# Description Animations
+
+Preferred patterns:
+
+- Word-by-word reveal
+- Progressive opacity
+- Reading-focused timing
+- Scroll-activated reveals
+- Dynamic emphasis
+- Sequential content reveals
+
+Large text blocks should never appear instantly.
+
+Reading should feel guided.
+
+---
+
+# Visual Animations
+
+Preferred patterns:
+
+- Layered parallax
+- Scroll-linked movement
+- Perspective shifts
+- Rotation systems
+- Depth transitions
+- Physics interactions
+- Momentum-based movement
+- Floating systems
+- Magnetic interactions
+- Reactive visuals
+
+Visuals should feel alive.
+
+Static visuals should be avoided whenever possible.
+
+---
+
+# Scroll Experiences
+
+Use GSAP ScrollTrigger extensively where appropriate.
+
+Preferred patterns:
+
+- Scrubbing
+- Pinning
+- Layer reveals
+- Timeline orchestration
+- Progressive storytelling
+- Section transitions
+- Depth-based movement
+- Visual sequencing
+
+Avoid basic fade-in-only experiences.
+
+---
+
+# Visual Architecture
+
+Every visual should be constructed using independent layers.
+
+Example:
+
+HeroVisual
+├── background
+├── gradients
+├── particles
+├── grid
+├── foreground
+├── highlights
+├── shadows
+├── overlays
+└── interaction layer
+
+Do not flatten visuals into a single image whenever animation is expected.
+
+Layer separation is required.
+
+---
+
+# 3D Direction
+
+Target stack:
+
+- Three.js
+- React Three Fiber
+- GSAP
+- Framer Motion
+
+3D should support storytelling.
+
+Never use 3D purely for decoration.
+
+Every 3D element must communicate meaning.
+
+3D should feel integrated into the narrative.
+
+---
+
+# Interaction Design
+
+Use advanced interactions where appropriate.
+
+Examples:
+
+- Magnetic buttons
+- Cursor interactions
+- Hover transformations
+- Physics reactions
+- Layer depth interactions
+- Motion-driven focus
+- Interactive storytelling
+
+Interactions should feel premium and responsive.
+
+---
+
+# Reference-Driven Development
+
+When a design reference is provided:
+
+1. Treat the reference as the source of truth.
+2. Match composition accurately.
+3. Match hierarchy accurately.
+4. Match spacing relationships.
+5. Match visual rhythm.
+6. Match typography hierarchy.
+7. Match overall mood and intent.
+
+Do not redesign the reference.
+
+Do not reinterpret the reference.
+
+Replicate first.
+
+Enhance through motion second.
+
+Optimize third.
+
+Visual fidelity is the highest priority.
+
+---
+
+# Anti-Template Rules
+
+Never generate:
+
+- Generic SaaS hero sections
+- Dashboard mockup heroes
+- Generic feature grids
+- Repetitive alternating layouts
+- Startup boilerplate sections
+- AI website clichés
+- Stock template compositions
+
+If the design resembles a common SaaS template, reconsider the solution.
+
+---
+
+# Accessibility
+
+Required:
+
+- Semantic HTML
+- Proper heading hierarchy
+- Keyboard navigation support
+- Reduced motion support
+- Accessible interactions
+- WCAG-conscious color usage
+
+Animations must gracefully degrade.
+
+---
+
+# Performance
 
 Target:
 
-60 FPS
+- 60 FPS
+- Smooth scrolling
+- Minimal layout shift
+- GPU-accelerated animations
+- Efficient asset loading
 
-Use:
+Prefer:
 
-- Instancing
-- LOD
-- Memoization
-- Suspense
-- Lazy loading
-- Compressed textures
-- Efficient shaders
+- transform
+- opacity
+- will-change when appropriate
 
 Avoid:
 
-- Heavy GLTF files
-- Large textures
-- Excessive draw calls
-- Unnecessary post-processing
-
-Performance is part of the experience.
+- Layout thrashing
+- Heavy paint operations
+- Excessive blur usage
+- Unnecessary DOM complexity
 
 ---
 
-# PROJECT STRUCTURE
+# Code Standards
 
-Organize code as:
+Always generate:
+
+- TypeScript
+- Next.js App Router
+- Tailwind CSS v4
+- Reusable components
+- Modular architecture
+- Production-ready code
+
+Avoid:
+
+- Monolithic components
+- Inline animation spaghetti
+- Hardcoded magic values
+- Unstructured files
+
+---
+
+# Recommended Project Structure
 
 src/
 ├── app/
 ├── components/
-├── scenes/
-├── animations/
+│   ├── sections/
+│   ├── visuals/
+│   ├── animations/
+│   ├── shared/
+│   └── ui/
+│
 ├── hooks/
-├── shaders/
-├── materials/
-├── systems/
-├── experience/
 ├── lib/
-└── types/
-
-Separate:
-
-- Scene Logic
-- Animation Logic
-- Scroll Logic
-- Shader Logic
-
-Avoid monolithic files.
+├── constants/
+├── data/
+├── styles/
+└── assets/
 
 ---
 
-# USER INTERACTION
+# Animation Ownership
 
-Mouse:
+GSAP should be responsible for:
 
-- Camera parallax
-- Object response
-- Light response
+- Scroll storytelling
+- Timelines
+- Section transitions
+- Narrative progression
+- Large-scale motion systems
 
-Scroll:
+Framer Motion should be responsible for:
 
-- Story progression
-- Scene evolution
-- Camera movement
+- Hover interactions
+- Micro interactions
+- Presence animations
+- Physics-based effects
+- Interactive states
 
-Cursor:
-
-- Magnetic interactions
-- Context-aware states
-
-Interactions should feel premium.
+Use both together where beneficial.
 
 ---
 
-# WHEN GENERATING NEW EXPERIENCES
+# Success Criteria
 
-Always perform this process before coding:
+A successful implementation should:
 
-1. Understand business objective
-2. Define user journey
-3. Define narrative
-4. Create storyboard
-5. Define scenes
-6. Define hero objects
-7. Define camera choreography
-8. Define scroll choreography
-9. Define scene transitions
-10. Define technical architecture
-11. Generate implementation plan
-12. Generate code
+- Feel handcrafted
+- Feel premium
+- Feel immersive
+- Feel cinematic
+- Feel interactive
+- Feel performant
+- Feel modern
+- Feel memorable
 
-Never jump directly into implementation.
+The website should feel like a living experience rather than a collection of static sections.
 
-Always think as a creative director first and engineer second.
+If the result looks like a generic SaaS template, generic AI landing page, or common marketing website, the implementation has failed.
