@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 * {
@@ -16,4 +16,9 @@ body {
 
 body {
   min-height: 100vh;
+  background: #05070f;
+  color: #eef3ff;
+  overflow-x: hidden;
+  font-family: var(--font-inter, Inter), -apple-system, system-ui, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }

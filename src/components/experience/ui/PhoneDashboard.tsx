@@ -1,9 +1,8 @@
 "use client";
 
-import { forwardRef } from "react";
 import { Activity, AlertTriangle } from "lucide-react";
-import styles from "./SyncPulse.module.css";
-import { dashboard } from "./data";
+import styles from "./phone.module.css";
+import { dashboard } from "../data";
 
 function sparkPaths(points: number[], w: number, h: number) {
   const pad = 3;
@@ -16,16 +15,13 @@ function sparkPaths(points: number[], w: number, h: number) {
   return { line, area };
 }
 
-/**
- * The dashboard shown on the phone screen. Rendered as crisp DOM (not a texture)
- * so every metric stays sharp while the phone twists in 3D.
- */
-const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref) {
-  const { line, area } = sparkPaths(dashboard.trend.points, 260, 56);
+/** Live Sync Pulse dashboard, crisp DOM so it stays sharp on the 3D-framed phone. */
+export default function PhoneDashboard() {
   const d = dashboard;
+  const { line, area } = sparkPaths(d.trend.points, 260, 56);
 
   return (
-    <div className={styles.dash} ref={ref}>
+    <div className={styles.dash}>
       <div className={`${styles.dashTop} ${styles.dashItem}`}>
         <span className={styles.live}>
           <span className={styles.liveDot} />
@@ -34,7 +30,6 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
         <span className={styles.avatar}>{d.avatar}</span>
       </div>
 
-      {/* Impact hero metric */}
       <div className={`${styles.card} ${styles.impact} ${styles.dashItem}`}>
         <div className={styles.rowBetween}>
           <span className={styles.cardKicker}>
@@ -46,7 +41,6 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
         <div className={styles.impactLabel}>{d.impact.label}</div>
       </div>
 
-      {/* 2x2 metric grid */}
       <div className={`${styles.grid2} ${styles.dashItem}`}>
         {d.metrics.map((m) => (
           <div key={m.key} className={`${styles.card} ${styles.metric}`}>
@@ -57,7 +51,6 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
         ))}
       </div>
 
-      {/* Reach trend sparkline */}
       <div className={`${styles.card} ${styles.trend} ${styles.dashItem}`}>
         <div className={styles.trendHead}>
           <div>
@@ -68,24 +61,16 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
         </div>
         <svg className={styles.spark} viewBox="0 0 260 56" preserveAspectRatio="none">
           <defs>
-            <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="pulseSpark" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.42" />
               <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
             </linearGradient>
           </defs>
-          <path d={area} fill="url(#sparkFill)" />
-          <path
-            d={line}
-            fill="none"
-            stroke="#7bb8ff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d={area} fill="url(#pulseSpark)" />
+          <path d={line} fill="none" stroke="#7bb8ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
 
-      {/* Alert row */}
       <div className={`${styles.card} ${styles.alert} ${styles.dashItem}`}>
         <span className={styles.alertIcon}>
           <AlertTriangle size={15} />
@@ -99,7 +84,6 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
         </button>
       </div>
 
-      {/* Channel mix */}
       <div className={`${styles.card} ${styles.mix} ${styles.dashItem}`}>
         <div className={styles.mixHead}>Channel Mix</div>
         {d.channelMix.map((ch) => (
@@ -116,6 +100,4 @@ const PhoneDashboard = forwardRef<HTMLDivElement>(function PhoneDashboard(_, ref
       <div className={`${styles.dashFooter} ${styles.dashItem}`}>{d.footer}</div>
     </div>
   );
-});
-
-export default PhoneDashboard;
+}

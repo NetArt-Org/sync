@@ -1,6 +1,7 @@
 "use client";
 
 import { create } from "zustand";
+import type { gsap } from "gsap";
 
 export const CHAPTERS = [
   "intro",
@@ -23,6 +24,10 @@ export const scrollState = {
   progress: 0,
   velocity: 0,
 };
+
+// Dev-only registry of per-chapter reveal timelines, so the experience can be
+// driven/inspected without a live RAF loop (see WorldCanvas dev handle).
+export const devTimelines = new Map<number, gsap.core.Timeline>();
 
 type ExperienceStore = {
   activeChapter: number;

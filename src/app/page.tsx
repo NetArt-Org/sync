@@ -1,9 +1,5 @@
-import SyncIntroExperience from "@/components/sections/SyncPulse/SyncIntroExperience";
+import Experience from "@/components/experience/Experience";
 
 export default function Home() {
-  return (
-    <main>
-      <SyncIntroExperience />
-    </main>
-  );
+  return <Experience />;
 }

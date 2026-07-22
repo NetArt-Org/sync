@@ -1,12 +1,10 @@
 "use client";
 
 /**
- * Precision measurement reticle — the Sync analogue of oryzo's Illustrator
- * vector-anchor loader. Concentric rings, crosshair smart-guides, bounding
- * brackets, anchor nodes and a sweeping scan line. Parts are classed with
- * plain (non-module) names so the GSAP timeline can choreograph them.
+ * Precision measurement reticle for the intro calibration beat. Parts carry
+ * plain class names so a GSAP timeline can choreograph them.
  */
-export default function CalibrationReticle({ className }: { className?: string }) {
+export default function Reticle({ className }: { className?: string }) {
   const nodes = Array.from({ length: 8 }, (_, i) => {
     const a = (i / 8) * Math.PI * 2 - Math.PI / 2;
     return { x: 200 + Math.cos(a) * 104, y: 200 + Math.sin(a) * 104 };
@@ -15,13 +13,11 @@ export default function CalibrationReticle({ className }: { className?: string }
 
   return (
     <svg className={className} viewBox="0 0 400 400" fill="none" aria-hidden>
-      {/* smart-guide crosshair */}
       <g stroke="rgba(255,255,255,0.5)" strokeWidth="1">
-        <line className="r-cross r-cross-h" x1="-400" y1="200" x2="800" y2="200" strokeDasharray="2 6" />
-        <line className="r-cross r-cross-v" x1="200" y1="-400" x2="200" y2="800" strokeDasharray="2 6" />
+        <line className="r-cross" x1="-400" y1="200" x2="800" y2="200" strokeDasharray="2 6" />
+        <line className="r-cross" x1="200" y1="-400" x2="200" y2="800" strokeDasharray="2 6" />
       </g>
 
-      {/* corner bounding brackets */}
       <g className="r-bracket" stroke="#fff" strokeWidth="2.5">
         <path d="M70 92 V70 H92" />
         <path d="M308 70 H330 V92" />
@@ -29,50 +25,26 @@ export default function CalibrationReticle({ className }: { className?: string }
         <path d="M92 330 H70 V308" />
       </g>
 
-      {/* outer dotted ring */}
       <circle className="r-ring-outer" cx="200" cy="200" r="150" stroke="rgba(255,255,255,0.55)" strokeWidth="1.5" strokeDasharray="1.5 7" />
 
-      {/* tick ring */}
       <g className="r-ticks" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5">
         {ticks.map((deg, i) => (
-          <line
-            key={i}
-            className="r-tick"
-            x1="200"
-            y1="58"
-            x2="200"
-            y2={i % 4 === 0 ? 48 : 53}
-            transform={`rotate(${deg} 200 200)`}
-          />
+          <line key={i} x1="200" y1="58" x2="200" y2={i % 4 === 0 ? 48 : 53} transform={`rotate(${deg} 200 200)`} />
         ))}
       </g>
 
-      {/* mid solid ring */}
       <circle className="r-ring-mid" cx="200" cy="200" r="104" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" />
 
-      {/* sweeping scan line */}
       <g className="r-scan">
         <line x1="200" y1="200" x2="200" y2="96" stroke="url(#scanGrad)" strokeWidth="2.5" strokeLinecap="round" />
       </g>
 
-      {/* anchor nodes on mid ring */}
       <g className="r-nodes">
         {nodes.map((n, i) => (
-          <rect
-            key={i}
-            className="r-node"
-            x={n.x - 4}
-            y={n.y - 4}
-            width="8"
-            height="8"
-            fill="#fff"
-            stroke="#1a47c8"
-            strokeWidth="1.5"
-          />
+          <rect key={i} className="r-node" x={n.x - 4} y={n.y - 4} width="8" height="8" fill="#fff" stroke="#1a47c8" strokeWidth="1.5" />
         ))}
       </g>
 
-      {/* inner ring + center target */}
       <circle className="r-ring-inner" cx="200" cy="200" r="52" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeDasharray="4 4" />
       <g className="r-center">
         <circle cx="200" cy="200" r="16" stroke="#7bb8ff" strokeWidth="2" />

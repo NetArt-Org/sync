@@ -1,0 +1,681 @@
+/* ============================================================
+   SYNC — immersive homepage. DOM chapters layered over the
+   persistent 3D world (which supplies all backgrounds).
+   ============================================================ */
+
+.canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- Persistent chrome (outside smoothed content) ---------- */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(18px, 2.6vw, 34px) clamp(22px, 5vw, 64px);
+  font-family: var(--font-inter, Inter), system-ui, sans-serif;
+  color: #fff;
+}
+
+.navBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.navBrandDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #3b82f6;
+  box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.7);
+}
+
+.navLinks {
+  display: flex;
+  gap: clamp(16px, 2.2vw, 38px);
+}
+
+.navLink {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.2s;
+}
+.navLink:hover { color: #fff; }
+.navLinkActive { color: #fff; }
+
+.navCta {
+  padding: 11px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  transition: background 0.2s, border-color 0.2s;
+}
+.navCta:hover { background: rgba(255, 255, 255, 0.16); border-color: rgba(255, 255, 255, 0.5); }
+
+.rail {
+  position: fixed;
+  right: clamp(16px, 2.4vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--font-inter, Inter), system-ui, sans-serif;
+}
+
+.railItem { display: flex; align-items: center; gap: 12px; justify-content: flex-end; }
+
+.railDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.28);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.railDotActive {
+  background: #3b82f6;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.6);
+}
+
+.railLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0);
+  transition: color 0.3s;
+  min-width: 66px;
+  text-align: right;
+}
+.railLabelActive { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Chapter scaffold ---------- */
+
+.chapter {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(90px, 12vh, 150px) clamp(24px, 6vw, 110px);
+  color: #eef3ff;
+  font-family: var(--font-inter, Inter), system-ui, sans-serif;
+}
+
+.chapterInner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7bb8ff;
+}
+.kicker::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: rgba(123, 184, 255, 0.6);
+}
+
+.titleMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0 0.02em;
+}
+.titleWord { display: inline-block; will-change: transform; }
+.titleAccent {
+  background: linear-gradient(120deg, #0a84ff, #7bb8ff 55%, #0a84ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Shared CTAs ---------- */
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #3b82f6);
+  box-shadow: 0 12px 30px -10px rgba(26, 71, 200, 0.6);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.ctaPrimary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(26, 71, 200, 0.75); }
+.ctaPrimary svg { transition: transform 0.25s; }
+.ctaPrimary:hover svg { transform: translateX(3px); }
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #cfe0ff;
+  text-decoration: none;
+}
+.ctaGhost svg { transition: transform 0.25s; }
+.ctaGhost:hover svg { transform: translateX(3px); }
+.ctaGhost:hover { color: #fff; }
+
+/* ============================================================
+   Chapter 1 — Intro
+   ============================================================ */
+
+.chapterIntro {
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.reticleBackdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(58vh, 620px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -46%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.introInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #7bb8ff;
+  box-shadow: 0 0 0 4px rgba(123, 184, 255, 0.25);
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: clamp(58px, 10vw, 150px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #fff;
+}
+.star {
+  color: #7bb8ff;
+  font-size: 0.4em;
+  vertical-align: super;
+}
+
+.heroSub {
+  margin: 6px 0 0;
+  max-width: 620px;
+  font-size: clamp(15px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: rgba(230, 240, 255, 0.8);
+}
+
+.footnote {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: clamp(28px, 5vh, 56px);
+  text-align: right;
+  z-index: 12;
+}
+.footnoteRule {
+  width: 120px;
+  margin: 0 0 10px auto;
+  border-top: 1px dashed rgba(255, 255, 255, 0.32);
+}
+.footnoteText {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.scrollCue {
+  position: absolute;
+  left: clamp(24px, 5vw, 72px);
+  bottom: clamp(28px, 5vh, 56px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  z-index: 12;
+}
+.scrollBar {
+  width: 46px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  position: relative;
+}
+.scrollBarFill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: linear-gradient(90deg, #0a84ff, #7bb8ff);
+  animation: cueSlide 2.4s ease-in-out infinite;
+}
+@keyframes cueSlide {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.01% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* ============================================================
+   Chapter 2 — Problem
+   ============================================================ */
+
+.statement {
+  margin: 26px 0 0;
+  max-width: 15ch;
+  font-size: clamp(38px, 6vw, 82px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+}
+.statementWord { display: inline-block; }
+.statementBody {
+  margin: 28px 0 0;
+  max-width: 620px;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: rgba(220, 232, 255, 0.72);
+}
+
+.points {
+  margin: 64px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.point {
+  padding: 26px 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(4px);
+}
+.pointNum {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7bb8ff;
+}
+.pointTitle {
+  margin: 14px 0 8px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+}
+.pointBody {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: rgba(220, 232, 255, 0.68);
+}
+
+/* ============================================================
+   Chapter 3 — Converge
+   ============================================================ */
+
+.convergeTitle {
+  margin: 24px 0 0;
+  max-width: 18ch;
+  font-size: clamp(36px, 5.4vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+}
+.convergeBody {
+  margin: 26px 0 0;
+  max-width: 640px;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: rgba(220, 232, 255, 0.74);
+}
+.pillars {
+  margin: 60px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.pillar { position: relative; padding-left: 20px; }
+.pillarBar {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(#0a84ff, #7bb8ff);
+}
+.pillarTitle { margin: 0 0 10px; font-size: 20px; font-weight: 600; color: #fff; }
+.pillarBody { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(220, 232, 255, 0.7); }
+
+.statRow {
+  margin: 64px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 34px;
+}
+.statValue {
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.statLabel { margin-top: 6px; font-size: 13px; color: rgba(220, 232, 255, 0.6); }
+
+/* ============================================================
+   Chapter 4 — Sync Pulse
+   ============================================================ */
+
+.pulseLayout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.pulseCopy { max-width: 560px; }
+.pulseTitle {
+  margin: 22px 0 0;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+}
+.pulseTitleWord { display: inline-block; will-change: transform; }
+.pulseDesc {
+  margin: 24px 0 0;
+  max-width: 500px;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.6;
+  color: rgba(220, 232, 255, 0.74);
+}
+
+.features { margin: 34px 0 0; display: flex; flex-direction: column; gap: 22px; }
+.feature { display: grid; grid-template-columns: 44px 1fr; gap: 15px; align-items: start; }
+.featureIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: linear-gradient(150deg, rgba(59, 130, 246, 0.22), rgba(26, 71, 200, 0.12));
+  border: 1px solid rgba(123, 184, 255, 0.25);
+  color: #7bb8ff;
+}
+.featureTitle { margin: 2px 0 4px; font-size: 16.5px; font-weight: 600; color: #fff; }
+.featureBody { margin: 0; font-size: 14.5px; line-height: 1.5; color: rgba(220, 232, 255, 0.66); }
+
+.pulseCtas { margin: 36px 0 0; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+
+.pulseStage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 1600px;
+}
+.phoneGlow {
+  position: absolute;
+  inset: -20% -30%;
+  background: radial-gradient(46% 42% at 50% 46%, rgba(37, 99, 235, 0.4), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.phoneFrame { position: relative; transform-style: preserve-3d; will-change: transform; }
+
+.floatCard {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(10, 30, 80, 0.08);
+  box-shadow: 0 12px 34px -10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+.floatCardLift { top: 14%; right: -18px; }
+.floatCardAlert { bottom: 16%; left: -30px; }
+.floatIconLift, .floatIconAlert {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.floatIconLift { background: linear-gradient(150deg, #3b82f6, #1a47c8); }
+.floatIconAlert { background: linear-gradient(150deg, #f8b74d, #f59e0b); }
+.floatKind { font-size: 12.5px; font-weight: 700; color: #0d1117; }
+.floatBody { margin-top: 1px; font-size: 11.5px; color: #5a6478; }
+
+/* ============================================================
+   Chapter 5 — Outcomes
+   ============================================================ */
+
+.outcomesTitle {
+  margin: 24px 0 0;
+  max-width: 16ch;
+  font-size: clamp(38px, 5.6vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+}
+.outcomesBody {
+  margin: 24px 0 0;
+  max-width: 620px;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: rgba(220, 232, 255, 0.74);
+}
+.metricsGrid {
+  margin: 56px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.metricTile {
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(59, 130, 246, 0.14), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(123, 184, 255, 0.18);
+}
+.metricTileValue {
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #7bb8ff, #cfe2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.metricTileDelta { margin-top: 4px; font-size: 13px; font-weight: 600; color: #34d399; }
+.metricTileLabel { margin-top: 12px; font-size: 14px; color: rgba(220, 232, 255, 0.72); }
+
+.channels { margin: 40px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.channelsLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(220, 232, 255, 0.5);
+  margin-right: 4px;
+}
+.channelChip {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #dbe8ff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================================
+   Chapter 6 — Close
+   ============================================================ */
+
+.chapterClose { min-height: 100vh; }
+.closeTitle {
+  margin: 26px 0 0;
+  font-size: clamp(42px, 6.4vw, 94px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+}
+.closeTitle .titleMask { display: block; }
+.closeLine { display: inline-block; will-change: transform; }
+.closeBody {
+  margin: 30px 0 0;
+  max-width: 620px;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: rgba(220, 232, 255, 0.74);
+}
+.closeCtas { margin: 40px 0 0; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+
+.partners { margin: 54px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.partnersLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(220, 232, 255, 0.5);
+}
+.partnerName {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.partnerName:not(:last-child)::after {
+  content: "·";
+  margin-left: 16px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+  position: absolute;
+  left: clamp(24px, 6vw, 110px);
+  bottom: clamp(24px, 4vh, 44px);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(220, 232, 255, 0.42);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1080px) {
+  .pulseLayout { grid-template-columns: 1fr; gap: 48px; }
+  .pulseStage { order: -1; }
+  .points, .pillars { grid-template-columns: 1fr; gap: 18px; }
+  .statRow, .metricsGrid { grid-template-columns: repeat(2, 1fr); }
+  .rail { display: none; }
+}
+
+@media (max-width: 640px) {
+  .navLinks { display: none; }
+  .heroTitle { font-size: clamp(46px, 15vw, 72px); }
+  .metricsGrid, .statRow { grid-template-columns: 1fr 1fr; }
+  .footnote, .footer { position: static; margin-top: 32px; text-align: left; }
+  .footnoteRule { margin-left: 0; }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollBarFill { animation: none; transform: scaleX(0.5); }
+}
