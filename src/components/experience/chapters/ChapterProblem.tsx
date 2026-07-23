@@ -27,11 +27,7 @@ export default function ChapterProblem() {
       <div className={styles.chapterInner}>
         <span className={styles.kicker}>{problem.kicker}</span>
         <h2 className={styles.statement}>
-          {problem.title.split(" ").map((w, i) => (
-            <span key={i} className={styles.statementWord}>
-              {w}{" "}
-            </span>
-          ))}
+          {problem.title}
         </h2>
         <p className={styles.statementBody}>{problem.body}</p>
 
