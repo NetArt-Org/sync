@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+
+  /* Fluid type scale — see TYPOGRAPHY.md. Do not override per-breakpoint. */
+  --text-h1: clamp(1.75rem, 1.178rem + 2.44vw, 3.375rem); /* 28px -> 54px */
+  --text-h2: clamp(1.5rem, 1.324rem + 0.751vw, 2rem); /* 24px -> 32px */
+  --text-h3: clamp(1rem, 0.78rem + 0.939vw, 1.625rem); /* 16px -> 26px */
+  --text-body: clamp(0.875rem, 0.831rem + 0.188vw, 1rem); /* 14px -> 16px */
 }
 
 * {
@@ -16,9 +22,36 @@ body {
 
 body {
   min-height: 100vh;
-  background: #05070f;
-  color: #eef3ff;
-  overflow-x: hidden;
-  font-family: var(--font-inter, Inter), -apple-system, system-ui, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
 }
+
+h1,
+h1 span {
+  font-size: var(--text-h1);
+  letter-spacing: normal;
+  line-height: 100%;
+}
+
+h2,
+h2 span {
+  font-size: var(--text-h2);
+  letter-spacing: normal;
+  line-height: 100%;
+}
+
+h3,
+h3 span {
+  font-size: var(--text-h3);
+  letter-spacing: normal;
+  line-height: 100%;
+}
+
+p {
+  font-size: var(--text-body);
+  letter-spacing: normal;
+  line-height: 20px;
+}
+
+span {
+  font-size: inherit;
+}
+
