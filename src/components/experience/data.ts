@@ -14,8 +14,8 @@ export const nav = {
 
 export const intro = {
   eyebrow: "Single-Source Cross-Media Intelligence",
-  titleLead: "Partnered with",
-  titleAccent: "Kantar",
+  titleLead: "Single Source Cross Media",
+  titleAccent: "Measurement",
   star: "*",
   footnote: ["* WORLDPANEL", "BY NUMERATOR"],
   sub: "Measure the same people across every screen — then connect exposure to outcomes.",

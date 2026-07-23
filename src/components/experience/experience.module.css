@@ -258,7 +258,6 @@
 
 .heroTitle {
   margin: 0;
-  font-size: clamp(58px, 10vw, 150px);
   line-height: 0.92;
   letter-spacing: -0.035em;
   font-weight: 700;
@@ -273,7 +272,6 @@
 .heroSub {
   margin: 6px 0 0;
   max-width: 620px;
-  font-size: clamp(15px, 1.5vw, 20px);
   line-height: 1.5;
   color: rgba(230, 240, 255, 0.8);
 }
@@ -340,7 +338,6 @@
 .statement {
   margin: 26px 0 0;
   max-width: 15ch;
-  font-size: clamp(38px, 6vw, 82px);
   line-height: 1.02;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -350,7 +347,6 @@
 .statementBody {
   margin: 28px 0 0;
   max-width: 620px;
-  font-size: clamp(15px, 1.4vw, 19px);
   line-height: 1.6;
   color: rgba(220, 232, 255, 0.72);
 }
@@ -394,7 +390,6 @@
 .convergeTitle {
   margin: 24px 0 0;
   max-width: 18ch;
-  font-size: clamp(36px, 5.4vw, 76px);
   line-height: 1.04;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -403,7 +398,6 @@
 .convergeBody {
   margin: 26px 0 0;
   max-width: 640px;
-  font-size: clamp(15px, 1.4vw, 19px);
   line-height: 1.6;
   color: rgba(220, 232, 255, 0.74);
 }
@@ -435,7 +429,6 @@
   padding-top: 34px;
 }
 .statValue {
-  font-size: clamp(30px, 3.6vw, 48px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff;
@@ -458,7 +451,6 @@
 .pulseCopy { max-width: 560px; }
 .pulseTitle {
   margin: 22px 0 0;
-  font-size: clamp(52px, 7vw, 96px);
   line-height: 0.96;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -468,7 +460,6 @@
 .pulseDesc {
   margin: 24px 0 0;
   max-width: 500px;
-  font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.6;
   color: rgba(220, 232, 255, 0.74);
 }
@@ -543,7 +534,6 @@
 .outcomesTitle {
   margin: 24px 0 0;
   max-width: 16ch;
-  font-size: clamp(38px, 5.6vw, 78px);
   line-height: 1.02;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -552,7 +542,6 @@
 .outcomesBody {
   margin: 24px 0 0;
   max-width: 620px;
-  font-size: clamp(15px, 1.4vw, 19px);
   line-height: 1.6;
   color: rgba(220, 232, 255, 0.74);
 }
@@ -569,7 +558,6 @@
   border: 1px solid rgba(123, 184, 255, 0.18);
 }
 .metricTileValue {
-  font-size: clamp(34px, 4vw, 54px);
   font-weight: 700;
   letter-spacing: -0.02em;
   background: linear-gradient(120deg, #7bb8ff, #cfe2ff);
@@ -606,7 +594,6 @@
 .chapterClose { min-height: 100vh; }
 .closeTitle {
   margin: 26px 0 0;
-  font-size: clamp(42px, 6.4vw, 94px);
   line-height: 1.0;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -617,7 +604,6 @@
 .closeBody {
   margin: 30px 0 0;
   max-width: 620px;
-  font-size: clamp(15px, 1.4vw, 19px);
   line-height: 1.6;
   color: rgba(220, 232, 255, 0.74);
 }
@@ -666,7 +652,6 @@
 
 @media (max-width: 640px) {
   .navLinks { display: none; }
-  .heroTitle { font-size: clamp(46px, 15vw, 72px); }
   .metricsGrid, .statRow { grid-template-columns: 1fr 1fr; }
   .footnote, .footer { position: static; margin-top: 32px; text-align: left; }
   .footnoteRule { margin-left: 0; }
