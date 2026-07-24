@@ -49,14 +49,7 @@ export default function ChapterIntro() {
         <p className={styles.heroSub}>{intro.sub}</p>
       </div>
 
-      <div className={styles.footnote}>
-        <div className={styles.footnoteRule} />
-        <div className={styles.footnoteText}>
-          {intro.footnote.map((l) => (
-            <div key={l}>{l}</div>
-          ))}
-        </div>
-      </div>
+     
 
       <div className={styles.scrollCue}>
         <span className={styles.scrollBar}>
