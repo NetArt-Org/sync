@@ -58,8 +58,6 @@ export default function ChapterClose() {
           ))}
         </div>
       </div>
-
-      <div className={styles.footer}>{close.footer}</div>
     </section>
   );
 }
