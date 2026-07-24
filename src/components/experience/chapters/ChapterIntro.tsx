@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import styles from "../experience.module.css";
-import Reticle from "../ui/Reticle";
 import { useChapterReveal } from "../hooks/useChapterReveal";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { intro } from "../data";
@@ -16,7 +15,6 @@ export default function ChapterIntro() {
     0,
     (tl, q) => {
       tl.from(q(`.${styles.eyebrow}`), { opacity: 0, y: 14, duration: 0.7 }, 0)
-        .from(q(".reticleBackdrop"), { opacity: 0, scale: 0.7, duration: 1.1, ease: "power3.out" }, 0)
         .from(q(`.${styles.titleWord}`), { yPercent: 120, duration: 1, stagger: 0.12, ease: "power4.out" }, 0.3)
         .from(q(`.${styles.star}`), { opacity: 0, duration: 0.5 }, 1.1)
         .from(q(`.${styles.heroSub}`), { opacity: 0, y: 16, duration: 0.7 }, 0.9)
@@ -28,8 +26,6 @@ export default function ChapterIntro() {
 
   return (
     <section ref={root} className={`${styles.chapter} ${styles.chapterIntro}`} aria-label="Introduction">
-      <Reticle className={`${styles.reticleBackdrop} reticleBackdrop`} />
-
       <div className={styles.introInner}>
         <span className={styles.eyebrow}>
           <span className={styles.eyebrowDot} />

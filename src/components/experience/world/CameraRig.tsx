@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { scrollState } from "../store";
 import { sampleCamera } from "./cameraPath";
@@ -9,24 +9,48 @@ import { sampleFog } from "./sceneColors";
 
 /**
  * Drives the flight. Camera position / lookAt / fov and the world fog+background
- * colour are pure functions of the smoothed global progress, so the motion is
- * deterministic and stays in lockstep with scroll.
+ * are functions of the smoothed global progress, plus a gentle mouse parallax
+ * and a responsive framing adjustment (further back + wider fov on small
+ * screens). Movement is eased toward the target each frame for a cinematic feel.
+ * Reads camera/scene/size/pointer off the per-frame state (never a hook value).
  */
-export default function CameraRig() {
-  const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
-  const scene = useThree((s) => s.scene);
+export default function CameraRig({ reduced = false }: { reduced?: boolean }) {
+  const target = useMemo(() => new THREE.Vector3(), []);
   const lookTarget = useMemo(() => new THREE.Vector3(), []);
-  const fogColor = useMemo(() => new THREE.Color("#1c3f95"), []);
+  const fogColor = useMemo(() => new THREE.Color("#060912"), []);
 
-  useFrame(() => {
+  useFrame((state) => {
+    const camera = state.camera as THREE.PerspectiveCamera;
+    const scene = state.scene;
+    const width = state.size.width;
+    const pointer = state.pointer;
+
     const p = scrollState.progress;
     const cam = sampleCamera(p);
 
-    camera.position.set(cam.pos[0], cam.pos[1], cam.pos[2]);
-    lookTarget.set(cam.look[0], cam.look[1], cam.look[2]);
+    // Responsive framing: pull back and widen on smaller viewports.
+    let zMul = 1;
+    let fovAdd = 0;
+    if (width < 640) {
+      zMul = 1.38;
+      fovAdd = 9;
+    } else if (width < 1024) {
+      zMul = 1.16;
+      fovAdd = 4;
+    }
+
+    const px = reduced ? 0 : pointer.x || 0;
+    const py = reduced ? 0 : pointer.y || 0;
+
+    target.set(cam.pos[0] + px * 0.4, cam.pos[1] + py * 0.28, cam.pos[2] * zMul);
+    camera.position.lerp(target, reduced ? 1 : 0.09);
+
+    lookTarget.set(cam.look[0] - px * 0.18, cam.look[1] - py * 0.12, cam.look[2]);
     camera.lookAt(lookTarget);
-    if (camera.fov !== cam.fov) {
-      camera.fov = cam.fov;
+
+    const fov = cam.fov + fovAdd;
+    if (Math.abs(camera.fov - fov) > 0.01) {
+      camera.fov = fov;
       camera.updateProjectionMatrix();
     }
 

@@ -1,21 +1,21 @@
 import * as THREE from "three";
 
-// Per-chapter atmosphere: fog colour (also the clear/background tint) sampled
-// by global progress. Brand-blue calibration → cold silos → converging warmth
-// → deep product dark → outcome blues → calm close.
+// Per-chapter atmosphere for the convergence scene. Kept deep and clean (near
+// black with a cool cast) so the additive streams + bloomed core read as the
+// only light — a premium, cinematic backdrop rather than a technical one.
 
 const FOG_STOPS: string[] = [
-  "#1c3f95", // intro — brand blue artboard
-  "#12276b", // intro/problem edge
-  "#0a1430", // problem — cold, isolated navy
-  "#0d1c48", // converge — brand blue returning
-  "#060f22", // pulse — deep product dark
-  "#08182c", // outcomes — blue-teal depth
-  "#050c1a", // close — calm navy
+  "#05060c", // intro — near-black, cinematic
+  "#050609", // problem
+  "#070915", // converge — a touch of blue enters
+  "#08091a", // pulse — deepest blue
+  "#060712", // outcomes
+  "#05060d", // outcomes edge
+  "#040509", // close — calm, dark
 ];
 
-const FOG_NEAR = 8;
-const FOG_FAR = 46;
+const FOG_NEAR = 6;
+const FOG_FAR = 26;
 
 const _a = new THREE.Color();
 const _b = new THREE.Color();

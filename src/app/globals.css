@@ -10,48 +10,53 @@
   --text-body: clamp(0.875rem, 0.831rem + 0.188vw, 1rem); /* 14px -> 16px */
 }
 
-* {
-  box-sizing: border-box;
-}
+/* Base element defaults live in @layer base so Tailwind utilities (a later
+   layer) can override line-height / letter-spacing / font-size per element.
+   CSS-module class rules are unlayered and continue to win over both. */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  min-height: 100vh;
-}
+  body {
+    min-height: 100vh;
+    font-family: var(--font-inter, Inter), system-ui, sans-serif;
+  }
 
-h1,
-h1 span {
-  font-size: var(--text-h1);
-  letter-spacing: normal;
-  line-height: 100%;
-}
+  h1,
+  h1 span {
+    font-size: var(--text-h1);
+    letter-spacing: normal;
+    line-height: 100%;
+  }
 
-h2,
-h2 span {
-  font-size: var(--text-h2);
-  letter-spacing: normal;
-  line-height: 100%;
-}
+  h2,
+  h2 span {
+    font-size: var(--text-h2);
+    letter-spacing: normal;
+    line-height: 100%;
+  }
 
-h3,
-h3 span {
-  font-size: var(--text-h3);
-  letter-spacing: normal;
-  line-height: 100%;
-}
+  h3,
+  h3 span {
+    font-size: var(--text-h3);
+    letter-spacing: normal;
+    line-height: 100%;
+  }
 
-p {
-  font-size: var(--text-body);
-  letter-spacing: normal;
-  line-height: 20px;
-}
+  p {
+    font-size: var(--text-body);
+    letter-spacing: normal;
+    line-height: 20px;
+  }
 
-span {
-  font-size: inherit;
+  span {
+    font-size: inherit;
+  }
 }
-

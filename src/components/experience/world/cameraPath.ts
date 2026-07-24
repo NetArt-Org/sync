@@ -1,6 +1,8 @@
-// Camera-flight keyframes. One node per chapter boundary (7 nodes / 6 chapters).
-// The camera dollies forward through −Z, panning/tilting through each zone.
-// Everything about the flight is tunable here.
+// Camera choreography for the hero sculpture (a single object at the world
+// origin). The camera performs one continuous cinematic move: it pushes in and
+// orbits so different surfaces are revealed, travels close over the form at the
+// climax, then eases back out — never cutting. One node per chapter boundary
+// (7 nodes / 6 chapters). All framing is tunable here.
 
 export type CamNode = {
   pos: [number, number, number];
@@ -9,20 +11,20 @@ export type CamNode = {
 };
 
 export const CAM_NODES: CamNode[] = [
-  // 0.0 — Intro: facing the SYNC core / reticle at origin
-  { pos: [0, 0, 14], look: [0, 0, 0], fov: 42 },
-  // 1/6 — pushing through into the dark
-  { pos: [0, 0.4, 6], look: [0, 0, -8], fov: 46 },
-  // 2/6 — Problem: flying among scattered monoliths
-  { pos: [2.4, 1.1, -9], look: [-1.2, 0.2, -20], fov: 54 },
-  // 3/6 — Converge: monoliths aligning into one lattice ahead
-  { pos: [-1.6, 0.6, -27], look: [0.4, 0.1, -42], fov: 46 },
-  // 4/6 — Sync Pulse: framing the phone (anchored near z = −58)
-  { pos: [0, 0.1, -46], look: [0, 0, -58], fov: 38 },
-  // 5/6 — Outcomes: sweeping past radiating outcome pillars
-  { pos: [1.8, 0.9, -66], look: [-0.6, 0.2, -82], fov: 52 },
-  // 1.0 — Close: pulling back to a wide, calm vista
-  { pos: [0, 2.6, -80], look: [0, 0.4, -94], fov: 44 },
+  // 0.0 — Intro: the sculpture framed, calm, at a cinematic distance
+  { pos: [0, 0.3, 7.2], look: [0, 0, 0], fov: 40 },
+  // 1/6 — beginning to drift in and around
+  { pos: [1.4, 0.5, 5.8], look: [0, 0, 0], fov: 42 },
+  // 2/6 — Problem: orbiting right, closer
+  { pos: [2.3, 0.1, 4.3], look: [0, 0, 0], fov: 46 },
+  // 3/6 — Why SYNC: pushed in close, travelling over the surface
+  { pos: [0.2, 0.2, 3.0], look: [0, 0, 0], fov: 52 },
+  // 4/6 — Sync Pulse: swing left so the form sits beside the phone
+  { pos: [-2.1, 0.4, 3.6], look: [0.2, 0, 0], fov: 46 },
+  // 5/6 — Outcomes: easing back to reveal the whole silhouette
+  { pos: [0.6, 0.7, 5.2], look: [0, 0, 0], fov: 44 },
+  // 1.0 — Close: wide, still, resolved
+  { pos: [0, 0.4, 7.0], look: [0, 0, 0], fov: 42 },
 ];
 
 function smootherstep(t: number): number {
